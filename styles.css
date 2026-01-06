@@ -54,6 +54,11 @@ thead {
     background-color: #454545;
 }
 
+tr:hover {
+    background-color: #424141;
+    transition: background-color 1.5s ease;
+}
+
 .deleteBtn {
     background-color: #ff4c4c;
     border: none;
@@ -77,7 +82,48 @@ dialog {
     justify-self: center;
     margin-top: 20%;
     text-align: center;
+    display: none;
+    opacity: 0;
+    translate: 0 -25vh;
+    transition-property: display opacity;
+    transition-duration: 1.5s;
+    transition-behavior: allow-discrete;
 } 
+
+dialog[open] {
+    display: block;
+    opacity: 1;
+    translate: 0 0;
+    transition-duration: 1.5s;
+
+    @starting-style {
+        opacity: 0;
+        translate: 0 -25vh;
+    }
+}
+
+dialog::backdrop{
+    transition-property: opacity display overlay;
+    transition-duration: 2s ease;
+    transition-behavior: allow-discrete;
+    opacity: 0;
+    backdrop-filter: blur(0px);  
+}
+
+dialog[open]::backdrop{
+    transition-property: opacity display overlay; 
+    transition-duration: 1s; 
+    transition-behavior: allow-discrete; 
+    opacity: 1; 
+    backdrop-filter: blur(2px);
+}
+
+@starting-style {
+    dialog[open]::backdrop{
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+}
 
 #submitBtn, #cancelBtn {
     background-color: #6c63ff;
@@ -99,8 +145,3 @@ dialog {
     background-color: #a43434; 
     transition: background-color 1s ease;
 } 
-
-dialog::backdrop{
-    background: rgba(0, 0, 0, 0.5); 
-    backdrop-filter: blur(2px);  
-}
