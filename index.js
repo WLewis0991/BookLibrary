@@ -81,16 +81,38 @@ function displayBooks() {
 }
 displayBooks
 
-console.log(myLibrary);
+//Add Book Dialog Box Functionality
+
 
 const addBook = document.getElementById('addBookBtn');
 const bookAddDialog = document.getElementById('addBookDialog');
 const cancelAddBook = document.getElementById('cancelBtn');
+const submitAddBook = document.getElementById('submitBtn');
+
+submitAddBook.addEventListener('click', (e) => {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = parseInt(document.getElementById('pages').value);
+    const readCheckbox = document.getElementById('read').checked;
+    const read = readCheckbox ? true : false;   
+
+
+    addBookToLibrary(title, author, pages, read);
+    displayBooks();
+
+    document.getElementById('addBookForm').reset();
+    bookAddDialog.close();
+    
+
+}); 
 
 addBook.addEventListener('click', (e) => {
     e.preventDefault();
     bookAddDialog.showModal();
 });
+
+
 
 cancelAddBook.addEventListener('click', (e) => {
     e.preventDefault();

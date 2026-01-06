@@ -24,27 +24,7 @@
             </thead>
             <tbody id="booksTableBody">
                 <!-- Book entries will go here -->
-                <tr>
-                    <td>The Great Gatsby</td>
-                    <td>F. Scott Fitzgerald</td>
-                    <td>180</td>
-                    <td>Yes</td>
-                    <td><button class="deleteBtn"> X </button></td>
-                </tr>
-                <tr>
-                    <td>The Great Gatsby</td>
-                    <td>F. Scott Fitzgerald</td>
-                    <td>180</td>
-                    <td>Yes</td>
-                    <td><button class="deleteBtn"> X </button></td>
-                </tr>
-                <tr>
-                    <td>The Great Gatsby</td>
-                    <td>F. Scott Fitzgerald</td>
-                    <td>180</td>
-                    <td>Yes</td>
-                    <td><button class="deleteBtn"> X </button></td>
-                </tr>
+
             </tbody>
         </table>
         <dialog id="addBookDialog">
@@ -56,10 +36,7 @@
                 <label for="pages">Pages:</label>
                 <input type="number" id="pages" name="pages" required><br><br>
                 <label for="read">Read:</label>
-                <select id="read" name="read">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select><br><br>
+                <input type="checkbox" id="read" name="read"><br><br>
                 <button type="submit" id="submitBtn">Add Book</button>
                 <button type="button" id="cancelBtn">Cancel</button>
             </form>
