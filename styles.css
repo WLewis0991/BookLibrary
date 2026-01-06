@@ -54,7 +54,6 @@ thead {
     background-color: #454545;
 }
 
-
 .deleteBtn {
     background-color: #ff4c4c;
     border: none;
@@ -100,7 +99,8 @@ dialog {
     background-color: #a43434; 
     transition: background-color 1s ease;
 } 
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.589);
-    backdrop-filter: blur(5px);
+
+dialog::backdrop{
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(2px);  
 }
