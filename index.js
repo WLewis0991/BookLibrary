@@ -28,10 +28,60 @@ const sampleBooks = [
 
 sampleBooks.forEach(book => {
     addBookToLibrary(book.title, book.author, book.pages, book.read);
+    displayBooks();
 });
 
-console.log(myLibrary);
+//Display Books
 
+function displayBooks() {
+    const libraryContainer = document.getElementById('booksTableBody');
+    libraryContainer.innerHTML = '';
+
+    myLibrary.forEach((book) => {
+        const bookRow = document.createElement('tr');
+
+        const titleCell = document.createElement('td');
+        titleCell.textContent = book.title;
+        bookRow.appendChild(titleCell);
+
+        const authorCell = document.createElement('td');
+        authorCell.textContent = book.author;
+        bookRow.appendChild(authorCell);
+
+        const pagesCell = document.createElement('td');
+        pagesCell.textContent = book.pages;
+        bookRow.appendChild(pagesCell);
+
+        const readCell = document.createElement('td');
+        const readCheckbox = document.createElement('input');
+        readCheckbox.type = 'checkbox';
+        readCheckbox.checked = book.read;
+        readCheckbox.addEventListener('change', () => {
+            book.read = readCheckbox.checked;
+        });
+        readCell.appendChild(readCheckbox);
+        bookRow.appendChild(readCell);
+
+        const deleteCell = document.createElement('td');
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('deleteBtn');
+        deleteBtn.textContent = 'X';
+        deleteBtn.addEventListener('click', () => {
+            const bookIndex = myLibrary.findIndex(b => b.id === book.id);
+            if (bookIndex > -1) {
+                myLibrary.splice(bookIndex, 1);
+                displayBooks();
+            }
+        });
+        deleteCell.appendChild(deleteBtn);
+        bookRow.appendChild(deleteCell);
+
+        libraryContainer.appendChild(bookRow);
+    });
+}
+displayBooks
+
+console.log(myLibrary);
 
 const addBook = document.getElementById('addBookBtn');
 const bookAddDialog = document.getElementById('addBookDialog');
