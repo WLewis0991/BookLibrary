@@ -79,9 +79,9 @@ function displayBooks() {
         libraryContainer.appendChild(bookRow);
     });
 }
-displayBooks
+displayBooks();
 
-//Add Book Dialog Box Functionality
+//Book Dialog Box Functionality
 
 
 const addBook = document.getElementById('addBookBtn');
