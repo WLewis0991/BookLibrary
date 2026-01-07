@@ -25,6 +25,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-grow: 0;
 }
 
 #libraryIcon {
@@ -47,6 +48,31 @@ body {
 #addBookBtn:hover {
     background-color: #3734a4;
     transition: background-color 1.5s ease;
+}
+
+#booklist {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-grow: 1;
+}   
+footer{
+    color: rgb(255, 166, 0);
+    margin: 0;
+    width: 100%;
+    flex-grow: 0;
+    padding: 10px;
+    text-align: center;
+    position:absolute;
+    bottom:0;
+    background-color: #454545;
+}
+
+#gitHubLogo {
+    width: 1.5em;
+    vertical-align: middle;
+    margin-left: 10px;
 }
 
 table {
@@ -126,7 +152,7 @@ dialog {
     opacity: 0;
     translate: 0 -25vh;
     transition-property: display opacity;
-    transition-duration: 1.5s;
+    transition-duration: .5s;
     transition-behavior: allow-discrete;
 } 
 
@@ -134,7 +160,7 @@ dialog[open] {
     display: block;
     opacity: 1;
     translate: 0 0;
-    transition-duration: 1.5s;
+    transition-duration: .5s;
 
     @starting-style {
         opacity: 0;
