@@ -59,6 +59,8 @@ tr:hover {
     transition: background-color 1.5s ease;
 }
 
+
+
 .deleteBtn {
     background-color: #ff4c4c;
     border: none;
@@ -72,6 +74,11 @@ tr:hover {
     cursor: pointer;
 }
 
+input[type="checkbox"] {
+    transform: scale(1.5);
+    cursor: pointer;
+    accent-color: white;
+}
 dialog {
     border-radius: 10px;
     width: 400px;
@@ -141,7 +148,7 @@ input[type="text"], input[type="number"] {
     color: white;
     padding: 10px 20px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
     border-radius: 25px;
     cursor: pointer;
     margin: 10px;
