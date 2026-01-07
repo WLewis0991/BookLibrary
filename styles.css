@@ -62,6 +62,11 @@ tr:hover {
     transition: background-color 1.5s ease;
 }
 
+td:hover {
+    cursor: default;
+    transform: scale(1.05);
+}
+
 
 
 .deleteBtn {
