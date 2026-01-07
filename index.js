@@ -95,7 +95,12 @@ submitAddBook.addEventListener('click', (e) => {
     const author = document.getElementById('author').value;
     const pages = parseInt(document.getElementById('pages').value);
     const readCheckbox = document.getElementById('read').checked;
-    const read = readCheckbox ? true : false;   
+    const read = readCheckbox ? true : false; 
+    
+    if(title === '' || author === '' || isNaN(pages) || pages <= 0){
+        alert('Please fill in all fields correctly.');
+        return;
+    }   
 
 
     addBookToLibrary(title, author, pages, read);
