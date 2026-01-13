@@ -1,43 +1,28 @@
-//Books in library array
-const myLibrary = [];
+
 
 //Book Constructor
-function Book(title, author, pages, read){
+class Book{
+    constructor(title, author, pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID();
-}
+}}
 
-//Add Book to library function
-function addBookToLibrary(title, author, pages, read) {
-    const book = new Book(title, author, pages, read);
-    myLibrary.push(book);
-}
+//Library
+class Library{
+    constructor(){
+        this.books=[]
+    }
+    addBook(book){
+    this.books.push(book);
+    }
+    displayBooks(){
+        const libraryContainer = document.getElementById('booksTableBody');
+        libraryContainer.innerHTML = '';
 
-//Sample Books
-
-const sampleBooks = [
-    {title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pages: 180, read: true},
-    {title: 'To Kill a Mockingbird', author: 'Harper Lee', pages: 281, read: false},
-    {title: '1984', author: 'George Orwell', pages: 328, read: true},
-    {title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279, read: false},
-    {title: 'The Catcher in the Rye', author: 'J.D. Salinger', pages: 214, read: true}
-];
-
-sampleBooks.forEach(book => {
-    addBookToLibrary(book.title, book.author, book.pages, book.read);
-    displayBooks();
-});
-
-//Display Books
-
-function displayBooks() {
-    const libraryContainer = document.getElementById('booksTableBody');
-    libraryContainer.innerHTML = '';
-
-    myLibrary.forEach((book) => {
+        this.books.forEach(book => {
         const bookRow = document.createElement('tr');
 
         const titleCell = document.createElement('td');
@@ -66,28 +51,51 @@ function displayBooks() {
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('deleteBtn');
         deleteBtn.textContent = 'X';
-        deleteBtn.addEventListener('click', () => {
-            const bookIndex = myLibrary.findIndex(b => b.id === book.id);
-            if (bookIndex > -1) {
-                myLibrary.splice(bookIndex, 1);
-                displayBooks();
-            }
+        deleteBtn.addEventListener('click', () => {           
+            const bookIndex = myLibrary.books.findIndex(b => b.id === book.id);
+                if (bookIndex > -1) {
+                    myLibrary.books.splice(bookIndex, 1);
+                    myLibrary.displayBooks();
+                }
         });
         deleteCell.appendChild(deleteBtn);
         bookRow.appendChild(deleteCell);
 
         libraryContainer.appendChild(bookRow);
-    });
+
+        })
+    }
 }
-displayBooks();
 
-//Book Dialog Box Functionality
 
+// CONST and Samples
 
 const addBook = document.getElementById('addBookBtn');
 const bookAddDialog = document.getElementById('addBookDialog');
 const cancelAddBook = document.getElementById('cancelBtn');
 const submitAddBook = document.getElementById('submitBtn');
+const myLibrary= new Library()
+
+const sampleBooks = [
+    {title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pages: 180, read: true},
+    {title: 'To Kill a Mockingbird', author: 'Harper Lee', pages: 281, read: false},
+    {title: '1984', author: 'George Orwell', pages: 328, read: true},
+    {title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279, read: false},
+    {title: 'The Catcher in the Rye', author: 'J.D. Salinger', pages: 214, read: true}
+];
+
+sampleBooks.forEach(bookData => {
+    const book = new Book(
+        bookData.title,
+        bookData.author,
+        bookData.pages,
+        bookData.read
+    );
+    myLibrary.addBook(book);
+    myLibrary.displayBooks();
+});
+
+//Book Dialog Box Functionality
 
 submitAddBook.addEventListener('click', (e) => {
     e.preventDefault();
@@ -102,10 +110,11 @@ submitAddBook.addEventListener('click', (e) => {
         return;
     }   
 
-
-    addBookToLibrary(title, author, pages, read);
-    displayBooks();
-
+    const newBook = new Book (title, author, pages, read);
+    myLibrary.addBook(newBook)
+    myLibrary.displayBooks();
+    
+    
     document.getElementById('addBookForm').reset();
     bookAddDialog.close();
     
