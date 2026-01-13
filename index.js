@@ -53,8 +53,8 @@ class Library{
         deleteBtn.addEventListener('click', () => {           
             const bookIndex = myLibrary.books.findIndex(b => b.id === book.id);
                 if (bookIndex > -1) {
-                    myLibrary.books.splice(bookIndex, 1);
-                    myLibrary.displayBooks();
+                    this.books.splice(bookIndex, 1);
+                    this.displayBooks();
                 }
         });
         deleteCell.appendChild(deleteBtn);
