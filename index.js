@@ -1,5 +1,4 @@
 
-
 //Book Constructor
 class Book{
     constructor(title, author, pages, read){
@@ -8,7 +7,7 @@ class Book{
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID();
-}}
+}};
 
 //Library
 class Library{
@@ -60,22 +59,18 @@ class Library{
         });
         deleteCell.appendChild(deleteBtn);
         bookRow.appendChild(deleteCell);
-
         libraryContainer.appendChild(bookRow);
-
         })
     }
 }
 
-
-// CONST and Samples
+// CONST 
 
 const addBook = document.getElementById('addBookBtn');
 const bookAddDialog = document.getElementById('addBookDialog');
 const cancelAddBook = document.getElementById('cancelBtn');
 const submitAddBook = document.getElementById('submitBtn');
 const myLibrary= new Library()
-
 const sampleBooks = [
     {title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pages: 180, read: true},
     {title: 'To Kill a Mockingbird', author: 'Harper Lee', pages: 281, read: false},
@@ -83,6 +78,8 @@ const sampleBooks = [
     {title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279, read: false},
     {title: 'The Catcher in the Rye', author: 'J.D. Salinger', pages: 214, read: true}
 ];
+
+//Samples displayed
 
 sampleBooks.forEach(bookData => {
     const book = new Book(
@@ -113,20 +110,15 @@ submitAddBook.addEventListener('click', (e) => {
     const newBook = new Book (title, author, pages, read);
     myLibrary.addBook(newBook)
     myLibrary.displayBooks();
-    
-    
+        
     document.getElementById('addBookForm').reset();
     bookAddDialog.close();
-    
-
 }); 
 
 addBook.addEventListener('click', (e) => {
     e.preventDefault();
     bookAddDialog.showModal();
 });
-
-
 
 cancelAddBook.addEventListener('click', (e) => {
     e.preventDefault();
