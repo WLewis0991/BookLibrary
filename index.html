@@ -36,22 +36,31 @@
                 <div>
                     <label for="title">Title:</label>
                     <input type="text" id="title" name="title" required><br><br>
+                    <span class="error-message"></span>
                 </div>
                 <div>
                     <label for="author">Author:</label>
                     <input type="text" id="author" name="author" required><br><br>
+                    <span class="error-message"></span>
+
                 </div>
                 <div>
                     <label for="pages">Pages:</label>
                     <input type="number" id="pages" name="pages" required><br><br>
+                    <span class="error-message"></span>
+
                 </div>
                 <div>
                     <label for="read">Read:</label>
-                    <input type="checkbox" id="read" name="read"><br><br>
+                    <input type="radio" id="read" name="read"><br><br>
+                    <span class="error-message"></span>
+
                 </div>
+                <div>
                     <button type="submit" id="submitBtn">Add Book</button>
                     <button type="button" id="cancelBtn">Cancel</button>
-            </form>
+                </div>
+                </form>
         </dialog>
     </div>
     <footer>

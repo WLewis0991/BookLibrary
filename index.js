@@ -113,22 +113,60 @@ sampleBooks.forEach((bookData) => {
 });
 
 //Book Dialog Box Functionality
-
+const form =document.getElementById("addBookForm");
 submitAddBook.addEventListener("click", (e) => {
   e.preventDefault();
+
+  let isValid = true;
+  const fields = form.querySelectorAll("input");
+
+  // Validate all fields
+  fields.forEach(field => {
+    if (!validateField(field)) {
+      isValid = false;
+    }
+  });
+
+  // If any field failed, stop here
+  if (!isValid) {
+    form.querySelector(":invalid")?.focus();
+    console.log("error");
+    return;
+  }
+
+  // ---- Submit logic (runs ONCE) ----
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = parseInt(document.getElementById("pages").value);
-  const readCheckbox = document.getElementById("read").checked;
-  const read = readCheckbox ? true : false;
+  const read = document.getElementById("read").checked;
 
   const newBook = new Book(title, author, pages, read);
   myLibrary.addBook(newBook);
   myLibrary.displayBooks();
 
-  document.getElementById("addBookForm").reset();
+  form.reset();
   bookAddDialog.close();
 });
+//Function to validate input fields
+function validateField(field) {
+    const errorEl = 
+        field.type === "radio" ? field.closest("div").querySelector(".error-message")
+        : field.parentElement.querySelector(`.error-message`);
+    //Error if field is invalid
+    if (!field.validity.valid){
+        errorEl.textContent = field.dataset.error || "This field is required!";
+        return false;
+    } 
+        errorEl.textContent = "";
+        return true;    
+};
+
+form.querySelectorAll(`input, textarea`).forEach(input =>
+
+    input.addEventListener("blur", () => {
+        validateField(input);
+    })
+)
 
 addBook.addEventListener("click", (e) => {
   e.preventDefault();
@@ -137,5 +175,15 @@ addBook.addEventListener("click", (e) => {
 
 cancelAddBook.addEventListener("click", (e) => {
   e.preventDefault();
+  const errorField = document.querySelectorAll(".error-message");
+
+  errorField.forEach( field => {
+    field.textContent = "";
+  })
+
+  form.reset();
   bookAddDialog.close();
 });
+
+
+
