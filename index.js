@@ -175,13 +175,12 @@ addBook.addEventListener("click", (e) => {
 
 cancelAddBook.addEventListener("click", (e) => {
   e.preventDefault();
-  const errorField = document.querySelectorAll(".error-message");
+  form.reset();
 
+  const errorField = document.querySelectorAll(".error-message");
   errorField.forEach( field => {
     field.textContent = "";
   })
-
-  form.reset();
   bookAddDialog.close();
 });
 
