@@ -1,72 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Library</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div id="header">
-        <img src="imgs/bookoutline.svg" alt="Library Icon" id="libraryIcon">
+      <img src="imgs/bookoutline.svg" alt="Library Icon" id="libraryIcon" />
 
-        <h1>Library</h1>
+      <h1>Library</h1>
 
-        <button id="addBookBtn">Add Book</button>
-        
+      <button id="addBookBtn">Add Book</button>
     </div>
     <div id="bookList">
-        <table>
-            <thead>
-                <tr id="tableHead">
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody id="booksTableBody">
-                <!-- Book entries will go here -->
-
-            </tbody>
-        </table>
-        <dialog id="addBookDialog">
-            <form id="addBookForm">
-                <div>
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" required><br><br>
-                    <span class="error-message"></span>
-                </div>
-                <div>
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author" required><br><br>
-                    <span class="error-message"></span>
-
-                </div>
-                <div>
-                    <label for="pages">Pages:</label>
-                    <input type="number" id="pages" name="pages" required><br><br>
-                    <span class="error-message"></span>
-
-                </div>
-                <div>
-                    <label for="read">Read:</label>
-                    <input type="radio" id="read" name="read"><br><br>
-                    <span class="error-message"></span>
-
-                </div>
-                <div>
-                    <button type="submit" id="submitBtn">Add Book</button>
-                    <button type="button" id="cancelBtn">Cancel</button>
-                </div>
-                </form>
-        </dialog>
+      <table>
+        <thead>
+          <tr id="tableHead">
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="booksTableBody">
+          <!-- Book entries will go here -->
+        </tbody>
+      </table>
+      <dialog id="addBookDialog">
+        <form id="addBookForm">
+          <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required /><br /><br />
+            <span class="error-message"></span>
+          </div>
+          <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required /><br /><br />
+            <span class="error-message"></span>
+          </div>
+          <div>
+            <label for="pages">Pages:</label>
+            <input type="number" id="pages" name="pages" required /><br /><br />
+            <span class="error-message"></span>
+          </div>
+          <div>
+            <label for="read">Read:</label>
+            <input type="radio" id="read" name="read" /><br /><br />
+            <span class="error-message"></span>
+          </div>
+          <div>
+            <button type="submit" id="submitBtn">Add Book</button>
+            <button type="button" id="cancelBtn">Cancel</button>
+          </div>
+        </form>
+      </dialog>
     </div>
     <footer>
-        <p>© 2026 Will Lewis Library <a href="https://github.com/WLewis0991"> <img src="imgs/gitHubLogo.svg" alt="Link to GitHub" id="gitHubLogo"> </a></p>
+      <p>
+        © 2026 Will Lewis Library
+        <a href="https://github.com/WLewis0991">
+          <img src="imgs/gitHubLogo.svg" alt="Link to GitHub" id="gitHubLogo" />
+        </a>
+      </p>
     </footer>
 
     <script src="index.js"></script>
-</body>
+  </body>
 </html>

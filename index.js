@@ -113,7 +113,7 @@ sampleBooks.forEach((bookData) => {
 });
 
 //Book Dialog Box Functionality
-const form =document.getElementById("addBookForm");
+const form = document.getElementById("addBookForm");
 submitAddBook.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -121,7 +121,7 @@ submitAddBook.addEventListener("click", (e) => {
   const fields = form.querySelectorAll("input");
 
   // Validate all fields
-  fields.forEach(field => {
+  fields.forEach((field) => {
     if (!validateField(field)) {
       isValid = false;
     }
@@ -149,24 +149,24 @@ submitAddBook.addEventListener("click", (e) => {
 });
 //Function to validate input fields
 function validateField(field) {
-    const errorEl = 
-        field.type === "radio" ? field.closest("div").querySelector(".error-message")
-        : field.parentElement.querySelector(`.error-message`);
-    //Error if field is invalid
-    if (!field.validity.valid){
-        errorEl.textContent = field.dataset.error || "This field is required!";
-        return false;
-    } 
-        errorEl.textContent = "";
-        return true;    
-};
+  const errorEl =
+    field.type === "radio"
+      ? field.closest("div").querySelector(".error-message")
+      : field.parentElement.querySelector(`.error-message`);
+  //Error if field is invalid
+  if (!field.validity.valid) {
+    errorEl.textContent = field.dataset.error || "This field is required!";
+    return false;
+  }
+  errorEl.textContent = "";
+  return true;
+}
 
-form.querySelectorAll(`input, textarea`).forEach(input =>
-
-    input.addEventListener("blur", () => {
-        validateField(input);
-    })
-)
+form.querySelectorAll(`input, textarea`).forEach((input) =>
+  input.addEventListener("blur", () => {
+    validateField(input);
+  }),
+);
 
 addBook.addEventListener("click", (e) => {
   e.preventDefault();
@@ -178,11 +178,8 @@ cancelAddBook.addEventListener("click", (e) => {
   form.reset();
 
   const errorField = document.querySelectorAll(".error-message");
-  errorField.forEach( field => {
+  errorField.forEach((field) => {
     field.textContent = "";
-  })
+  });
   bookAddDialog.close();
 });
-
-
-
